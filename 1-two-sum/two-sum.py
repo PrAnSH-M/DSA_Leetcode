@@ -1,26 +1,18 @@
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # ans = []
-
-        # for i in range(len(nums)):
-        #     for j in range(i + 1, len(nums)):
-        #         if nums[i] + nums[j] == target:
-        #             ans.append(i)
-        #             ans.append(j)
-        #             break
-
-        # return ans
-
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
         mp = {}
 
-        for index, val in enumerate(nums):
-            comp = target - val
+        output = []
 
-            if comp in mp:
-                return [mp[comp], index]
+        for i in range(len(nums)):
+            complement = target - nums[i] # 9 - 2
+            if complement in mp: 
+                output.append(mp[complement])
+                output.append(i)
+                return output
+            mp[nums[i]] = i # {7, 2}
+            # print(mp)
+        
+        return output
 
-            mp[val] = index
-
-        return mp
-
-
+        
