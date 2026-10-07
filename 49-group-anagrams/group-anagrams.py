@@ -1,13 +1,21 @@
 class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        
-        mp = {}
-        for word in strs:
-            compare_word = ''.join(sorted(word))
 
-            if compare_word not in mp:
-                mp[compare_word] = []
-            mp[compare_word].append(word)
+        mp = {}
+
+        for word in strs:
+
+            freq = [0] * 26
+
+            for ch in word:
+                index = ord(ch) - ord('a')
+                freq[index] += 1
+
+            key = tuple(freq)
+
+            if key not in mp:
+                mp[key] = []
+
+            mp[key].append(word)
 
         return list(mp.values())
-        
