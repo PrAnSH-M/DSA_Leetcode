@@ -1,13 +1,14 @@
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
         
-        ans = {}
+        mp = {}
 
         for word in strs:
-            key = "".join(sorted(word))
-            if key not in ans:
-                ans[key] = []
-            ans[key].append(word)
+            compare_word = ''.join(sorted(word))
 
-        return list(ans.values())
+            if compare_word not in mp:
+                mp[compare_word] = []
+            mp[compare_word].append(word)
+
+        return list(mp.values())
         
