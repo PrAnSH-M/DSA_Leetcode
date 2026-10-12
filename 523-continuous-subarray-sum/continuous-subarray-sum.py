@@ -19,11 +19,11 @@ class Solution:
             rem = sum % k
             if rem not in mp:
                 mp[rem] = i
-            else:
-                c = i - mp[rem]
+            
+            c = i - mp[rem]
 
-                if c >= 2:
-                    return True
+            if c >= 2:
+                return True
             
         
         return False
