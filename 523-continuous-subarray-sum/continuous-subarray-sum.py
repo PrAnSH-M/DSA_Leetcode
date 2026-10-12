@@ -1,21 +1,35 @@
 class Solution:
-    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+    def checkSubarraySum(self, nums: list[int], k: int) -> bool:
+        """
+            will store a map of reminder -> idx
+            then will calculate sum % k and store it in mp if not seen and if seen will check its size if its >= 2 return true else return false
+
+            and if we found ans but its size is not >= 2 return false
+
+        """
+
         mp = {0: -1}
-        curr_sum = 0
-        index = 0
 
-        ans = False
+        n = len(nums)
 
-        for num in nums:
-            curr_sum += num
+        sum = 0 # initial sum
 
-            remainder = curr_sum % k
-
-            if remainder in mp:
-                if index - mp[remainder] >= 2:
-                    ans = True
+        for i in range(n):
+            sum += nums[i]
+            rem = sum % k
+            if rem not in mp:
+                mp[rem] = i
             else:
-                mp[remainder] = index
-            index += 1
-        return ans
+                c = i - mp[rem]
+
+                if c >= 2:
+                    return True
+            
+        
+        return False
+            
+
+
+
+
         
