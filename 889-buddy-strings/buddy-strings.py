@@ -30,8 +30,11 @@ class Solution:
         if len(indices) != 2:
             return False
 
-        i, j = indices
+        s = list(s)
+        s[indices[0]], s[indices[1]] = s[indices[1]], s[indices[0]]
 
-        return s[i] == goal[j] and s[j] == goal[i]
+        s = "".join(s)
+
+        return s == goal
 
         
